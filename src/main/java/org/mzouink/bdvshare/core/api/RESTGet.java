@@ -11,17 +11,23 @@ public class RESTGet {
     private static final String param = "id";
 
     public static String getJson(String id) {
-        final Client client = ClientBuilder.newClient();
-        final String REST_URI
-                = SETTINGS.LINK+get;
-        System.out.println(client.target(REST_URI).queryParam(param,id).getUri());
-        return client
-                .target(REST_URI)
-                .queryParam(param,id)
-                .request(MediaType.TEXT_PLAIN).get(String.class);
+        try {
+            final Client client = ClientBuilder.newClient();
+            final String REST_URI
+                    = SETTINGS.LINK+get;
+            System.out.println(client.target(REST_URI).queryParam(param,id).getUri());
+            return client
+                    .target(REST_URI)
+                    .queryParam(param,id)
+                    .request(MediaType.TEXT_PLAIN).get(String.class);
+        }catch (Exception e){
+            System.out.println("Error: "+e);
+            return null;
+        }
+
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args)  {
 //        System.out.println(RESTGet.getJson(""));
         System.out.println(RESTGet.getJson("0H0v"));
         System.out.println(RESTGet.getJson("vPbF"));
