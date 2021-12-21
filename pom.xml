@@ -110,9 +110,9 @@
         </dependency>
         <!-- ImgLib2 dependencies -->
         <dependency>
-            <groupId>com.github.saalfeldlab</groupId>
-            <artifactId>template-building</artifactId>
-            <version>d26d3a8</version>
+            <groupId>com.github.BigDistributor</groupId>
+            <artifactId>AWS_DataExchange</artifactId>
+            <version>249d7a8</version>
         </dependency>
 
         <dependency>
