@@ -11,6 +11,10 @@ final private AbstractLoadSupplier loader;
         this.loader = loader;
     }
 
+    public AbstractLoadSupplier getLoader() {
+        return loader;
+    }
+
     public static LoaderSupplier fromLoader(AbstractLoadSupplier loader){
         LoaderType loaderType = LoaderType.forClass(loader.getClass());
         return new LoaderSupplier(loaderType.getName(),loader);

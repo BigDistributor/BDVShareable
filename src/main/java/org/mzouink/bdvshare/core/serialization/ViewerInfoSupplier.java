@@ -19,6 +19,14 @@ public class ViewerInfoSupplier implements Serializable {
         this.viewerStateSupplier = viewerStateSupplier;
     }
 
+    public LoaderSupplier getLoaderSupplier() {
+        return loaderSupplier;
+    }
+
+    public ViewerStateSupplier getViewerStateSupplier() {
+        return viewerStateSupplier;
+    }
+
     public String toJson(){
         return new Gson().toJson(this);
     }

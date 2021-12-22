@@ -6,10 +6,16 @@ import com.bigdistributor.aws.data.CredentialSupplier;
 import com.bigdistributor.aws.dataexchange.aws.s3.func.auth.AWSCredentialInstance;
 import org.janelia.saalfeldlab.n5.N5Reader;
 import org.janelia.saalfeldlab.n5.s3.N5AmazonS3Reader;
+import org.mzouink.bdvshare.api.BDVShareable;
 
 import java.io.IOException;
 
 public class AWSN5Supplier extends AbstractLoadSupplier  {
+
+    @Override
+    public BDVShareable open() {
+       return BDVShareable.openN5(this);
+    }
 
     AWSN5Supplier(CredentialSupplier cred, String uri) {
         super(cred, uri);

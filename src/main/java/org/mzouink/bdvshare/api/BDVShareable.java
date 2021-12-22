@@ -8,6 +8,8 @@ import net.preibisch.mvrecon.fiji.spimdata.explorer.popup.BDVPopup;
 import org.mzouink.bdvshare.core.bdv.loader.AWSN5Supplier;
 import org.mzouink.bdvshare.core.bdv.loader.AWSSpimSupplier;
 import org.mzouink.bdvshare.core.bdv.loader.LoaderSupplier;
+import org.mzouink.bdvshare.core.restclient.RESTCreate;
+import org.mzouink.bdvshare.core.restclient.RESTGet;
 import org.mzouink.bdvshare.core.serialization.ViewerInfoSupplier;
 import org.mzouink.bdvshare.core.serialization.ViewerStateSupplier;
 import org.mzouink.bdvshare.core.ui.SharePopup;
@@ -27,31 +29,36 @@ public class BDVShareable {
         refresh();
     }
 
-    private void refresh() {
-        bdv.getViewerFrame().revalidate();
-        bdv.getViewerFrame().repaint();
-    }
-
     public static BDVShareable openSpim(AWSSpimSupplier supplier) {
         return new BDVShareable(BDVPopup.createBDV(supplier.getData(), "Data"), LoaderSupplier.fromLoader(supplier));
-
     }
 
     public static BDVShareable openN5(AWSN5Supplier supplier) {
         return null;
     }
 
+    private void refresh() {
+        bdv.getViewerFrame().revalidate();
+        bdv.getViewerFrame().repaint();
+    }
+
     public String share() {
         System.out.println("Start Sharing");
         ViewerStateSupplier viewerStateSupplier = ViewerStateSupplier.fromBDV(bdv);
         ViewerInfoSupplier infoSupplier = new ViewerInfoSupplier(loaderSupplier,viewerStateSupplier);
-        return null;
+        String oneTimeKey = RESTCreate.post(infoSupplier.toJson());
+        return oneTimeKey;
     }
 
-    ;
 
     public static BDVShareable fromID(String id) {
-        return null;
+      String json = RESTGet.getJson(id);
+        System.out.println(json);
+      ViewerInfoSupplier infoSupplier = ViewerInfoSupplier.fromJson(json);
+      BDVShareable bdvShareable = infoSupplier.getLoaderSupplier().getLoader().open();
+      infoSupplier.getViewerStateSupplier().setTo(bdvShareable.bdv);
+      bdvShareable.refresh();
+      return bdvShareable;
     }
 
     public static void main(String[] args) {
@@ -60,5 +67,8 @@ public class BDVShareable {
         CredentialSupplier cred = new CredentialSupplier(AWSCredentialInstance.get().getAWSAccessKeyId(), AWSCredentialInstance.get().getAWSSecretKey(), Regions.EU_CENTRAL_1.getName());
 
         BDVShareable bdvShareable = BDVShareable.openSpim(new AWSSpimSupplier(cred, uri));
+
+        String oneTimeKey = bdvShareable.share();
+        System.out.println(oneTimeKey);
     }
 }

@@ -1,18 +1,26 @@
 package org.mzouink.bdvshare.core.bdv.loader;
 
 import com.amazonaws.regions.Regions;
+import com.bigdistributor.aws.data.CredentialConfig;
 import com.bigdistributor.aws.data.CredentialSupplier;
 import com.bigdistributor.aws.dataexchange.aws.s3.func.auth.AWSCredentialInstance;
 import com.bigdistributor.aws.spimloader.AWSSpimLoader;
 import net.preibisch.mvrecon.fiji.spimdata.SpimData2;
+import org.mzouink.bdvshare.api.BDVShareable;
 
 public class AWSSpimSupplier extends AbstractLoadSupplier {
+    @Override
+    public BDVShareable open() {
+        return BDVShareable.openSpim(this);
+    }
+
     public AWSSpimSupplier(CredentialSupplier cred, String uri) {
         super(cred, uri);
     }
 
     public SpimData2 getData() {
-        AWSSpimLoader loader = AWSSpimLoader.init(CredentialSupplier.get().getS3(), uri);
+        CredentialConfig.set(cred);
+        AWSSpimLoader loader = AWSSpimLoader.init(cred.getS3(), uri);
         return loader.getSpimdata();
     }
 

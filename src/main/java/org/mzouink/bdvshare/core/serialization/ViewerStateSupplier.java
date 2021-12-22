@@ -8,4 +8,7 @@ public class ViewerStateSupplier implements Serializable {
     public static ViewerStateSupplier fromBDV(BigDataViewer bdv) {
         return new ViewerStateSupplier();
     }
+
+    public void setTo(BigDataViewer bdv) {
+    }
 }
