@@ -18,5 +18,7 @@ public class BigStitcherViewer {
         SpimData2 data = loader.getSpimdata();
         System.out.println(data.toString());
         BigDataViewer viewer = BDVPopup.createBDV(data,"Data");
+        BDVPopup.initTransform(viewer.getViewer());
+
     }
 }
