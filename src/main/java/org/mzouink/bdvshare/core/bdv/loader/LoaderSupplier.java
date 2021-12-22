@@ -15,4 +15,8 @@ final private AbstractLoadSupplier loader;
         LoaderType loaderType = LoaderType.forClass(loader.getClass());
         return new LoaderSupplier(loaderType.getName(),loader);
     }
+
+    public LoaderType getLoaderType(){
+        return LoaderType.forName(loaderType);
+    }
 }

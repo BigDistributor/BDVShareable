@@ -9,7 +9,7 @@ import org.janelia.saalfeldlab.n5.s3.N5AmazonS3Reader;
 
 import java.io.IOException;
 
-public class AWSN5Supplier extends AbstractLoadSupplier {
+public class AWSN5Supplier extends AbstractLoadSupplier  {
 
     AWSN5Supplier(CredentialSupplier cred, String uri) {
         super(cred, uri);

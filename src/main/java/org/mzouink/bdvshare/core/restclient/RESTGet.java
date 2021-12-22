@@ -1,4 +1,4 @@
-package org.mzouink.bdvshare.core.api;
+package org.mzouink.bdvshare.core.restclient;
 
 import org.mzouink.bdvshare.core.SETTINGS;
 
