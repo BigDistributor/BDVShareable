@@ -1,4 +1,4 @@
-package org.mzouink.bdvshare.core.serialization;
+package org.mzouink.bdvshare.core.serialization.serializers;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonDeserializationContext;

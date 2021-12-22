@@ -9,7 +9,6 @@ public class SharePopup extends JFrame {
         setLayout(new FlowLayout());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         JLabel title = new JLabel("One time sharing code :", SwingConstants.CENTER);
-
         title.setPreferredSize(new Dimension(400,50));
         add(title);
         JLabel codeLabel = new JLabel(format(shareCode), SwingConstants.CENTER);
@@ -31,12 +30,10 @@ public class SharePopup extends JFrame {
 
     private static String format(String str) {
         return str.replace("", " ").trim();
-
     }
 
     public static void main(String[] args) {
-
         System.out.println(format("XLMH"));
-                new SharePopup("XLMH");
+        new SharePopup("XLMH");
     }
 }
