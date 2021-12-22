@@ -29,6 +29,10 @@ public class BDVShareable {
         refresh();
     }
 
+    public BigDataViewer getBdv() {
+        return bdv;
+    }
+
     public static BDVShareable openSpim(AWSSpimSupplier supplier) {
         return new BDVShareable(BDVPopup.createBDV(supplier.getData(), "Data"), LoaderSupplier.fromLoader(supplier));
     }
@@ -68,7 +72,7 @@ public class BDVShareable {
 
         BDVShareable bdvShareable = BDVShareable.openSpim(new AWSSpimSupplier(cred, uri));
 
-        String oneTimeKey = bdvShareable.share();
-        System.out.println(oneTimeKey);
+//        String oneTimeKey = bdvShareable.share();
+//        System.out.println(oneTimeKey);
     }
 }
