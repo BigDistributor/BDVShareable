@@ -2,6 +2,8 @@
 
 You can get your data, with the same visualization parameters opened in another computer. only, by a simple smart code  _( Expl : XLMH )_
 
+![APIs](img/graph.jpg)
+
 ### How to use:
 
 You open your data using
