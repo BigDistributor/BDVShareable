@@ -3,8 +3,8 @@ package net.preibisch.bdvshare.core.ui;
 import javax.swing.*;
 import java.awt.*;
 
-public class SharePopup extends JFrame {
-    public SharePopup(String shareCode) {
+public class OntTimeTokenSharePopup extends JFrame {
+    public OntTimeTokenSharePopup(String shareCode) {
         super("Share : "+format(shareCode));
         setLayout(new FlowLayout());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -34,6 +34,6 @@ public class SharePopup extends JFrame {
 
     public static void main(String[] args) {
         System.out.println(format("XLMH"));
-        new SharePopup("XLMH");
+        new OntTimeTokenSharePopup("XLMH");
     }
 }
