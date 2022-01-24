@@ -117,7 +117,12 @@
 <!--            <artifactId>slf4j-log4j12</artifactId>-->
 <!--            <version>1.7.32</version>-->
 <!--            <scope>test</scope>-->
-<!--        </dependency>-->
+<!--        </dependency>--><!-- https://mvnrepository.com/artifact/org.webjars/lz-string -->
+        <dependency>
+            <groupId>com.github.diogoduailibe</groupId>
+            <artifactId>lzstring4j</artifactId>
+            <version>e8a95fd</version>
+        </dependency>
 
         <dependency>
             <groupId>sc.fiji</groupId>
